@@ -1,3 +1,4 @@
+import React from "react";
 import "./ScreenQuiz.scss";
 import Header from "./Header";
 import Body from "./Body";

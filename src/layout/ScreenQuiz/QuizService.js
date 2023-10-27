@@ -10,7 +10,7 @@
  * @version 1.0.0.0
  */
 async function CallAPI(apiUrl) {
-  return await fetch(apiUrl).then((res) => {
+  return fetch(apiUrl).then((res) => {
     return res.json();
   });
 }
