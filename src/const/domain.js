@@ -1,1 +1,1 @@
-export const MAIN_DOMAIN = "DOMAIN:PORT/quizz/:id";
+export const CLASS_CODE = "888";
