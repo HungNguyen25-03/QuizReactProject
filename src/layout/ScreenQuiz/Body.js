@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Button from "../../components/Button";
 import { useNavigate } from "react-router-dom";
 import CallAPI from "./QuizService";
+import QuestionForm from "../../components/QuestionForm";
 
 export default function Body() {
   // Define useStates.
@@ -26,32 +27,16 @@ export default function Body() {
 
   return (
     <div className="body">
-      {Object.keys(questionList).map((v, i) => {
+      {Object.values(questionList).map((v, i) => {
         return (
           <div key={i}>
-            {Object.values(questionList).map((ques, j) => {
-              return (
-                <div className="exam-question">
-                  <strong>
-                    <p key={j}>{ques.content}</p>
-                  </strong>
-                  {ques.answer.map((ans, e) => {
-                    return (
-                      <div className="answer-area">
-                        <input
-                          id={ans.id}
-                          type="radio"
-                          value={e.content}
-                          key={j + "." + e}
-                          name={ques.id}
-                        ></input>
-                        <label htmlFor={ans.id}>{ans.content}</label>
-                      </div>
-                    );
-                  })}
-                </div>
-              );
-            })}
+            {
+              <QuestionForm
+                question={v.content}
+                answer={v.answer}
+                quesId={v.id}
+              ></QuestionForm>
+            }
           </div>
         );
       })}

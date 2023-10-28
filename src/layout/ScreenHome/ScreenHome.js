@@ -14,9 +14,9 @@ export default function ScreenHome() {
     setCode(e.target.value);
   };
 
-  const hanldeSubmit = (e, id) => {
+  const hanldeSubmit = (e) => {
     if (code === CLASS_CODE) {
-      nav(`/exam/${id}`);
+      nav(`/exam`);
     }
   };
 
