@@ -10,9 +10,13 @@
  * @version 1.0.0.0
  */
 async function CallAPI(apiUrl) {
-  return fetch(apiUrl).then((res) => {
-    return res.json();
-  });
+  try {
+    return await fetch(apiUrl).then((res) => {
+      return res.json();
+    });
+  } catch (error) {
+    return error.message;
+  }
 }
 
 export default CallAPI;

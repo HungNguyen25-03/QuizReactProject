@@ -6,7 +6,7 @@ import Footer from "./Footer";
 
 export default function ScreenQuiz() {
   return (
-    <div>
+    <div className="container-quiz">
       <Header></Header>
       <Body></Body>
       <Footer></Footer>

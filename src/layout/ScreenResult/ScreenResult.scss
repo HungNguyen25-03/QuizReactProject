@@ -1,0 +1,18 @@
+.result {
+  background: aliceblue;
+  height: 40%;
+  width: 50%;
+  border-radius: 5px;
+
+  .result-button {
+    display: block;
+    width: 200px;
+    height: 60px;
+    left: 30px;
+    margin: auto;
+    font-size: 3rem;
+    font-weight: 700;
+    background: #86d7e1;
+    border-radius: 4px;
+  }
+}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 export default function QuestionForm({ quesId, question, answer }) {
   const [firstAnswer, secondAnswer, thirdAnswer, fouthAnswer] = answer;
@@ -8,8 +8,8 @@ export default function QuestionForm({ quesId, question, answer }) {
       document.querySelectorAll("input[type=radio]:checked")
     ).map((e) => e.id);
     let quesId = Array.from(document.querySelectorAll("h2"));
-    quesId.forEach((e) => {
-      checked.forEach((item) => {
+    checked.forEach((item) => {
+      quesId.forEach((e) => {
         localStorage.setItem(
           `${e.id}`,
           JSON.stringify({
@@ -20,6 +20,15 @@ export default function QuestionForm({ quesId, question, answer }) {
       });
     });
   };
+
+  const renderUI = () => {
+    let quesId = Array.from(document.querySelectorAll("h2"));
+    quesId.forEach((e) => {
+      const answer = JSON.parse(localStorage.getItem(`${e.id}`));
+    });
+  };
+
+  renderUI();
 
   return (
     <div className={"form"}>
