@@ -3,24 +3,6 @@ import React from "react";
 export default function QuestionForm({ quesId, question, answer }) {
   const [firstAnswer, secondAnswer, thirdAnswer, fouthAnswer] = answer;
 
-  const handleChange = () => {
-    let checked = Array.from(
-      document.querySelectorAll("input[type=radio]:checked")
-    ).map((e) => e.id);
-    let quesId = Array.from(document.querySelectorAll("h2"));
-    quesId.forEach((e) => {
-      checked.forEach((item) => {
-        localStorage.setItem(
-          `${e.id}`,
-          JSON.stringify({
-            questionId: e.id,
-            answerId: item,
-          })
-        );
-      });
-    });
-  };
-
   return (
     <div className={"form"}>
       <form>
