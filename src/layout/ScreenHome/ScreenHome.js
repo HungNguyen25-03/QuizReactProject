@@ -3,8 +3,10 @@ import Button from "../../components/Button";
 import { useNavigate } from "react-router-dom";
 import BgVideo from "/Mern_Stark/ReactJS/QuizProject/src/asserts/videoBg.mp4";
 import "./ScreenHome.scss";
+import { ctx } from "../../CtxData";
 
 export default function ScreenHome() {
+  const ct = useContext(ctx);
   const [code, setCode] = useState("");
   const nav = useNavigate();
 
@@ -15,7 +17,7 @@ export default function ScreenHome() {
 
   const handleSubmit = (id) => () => {
     nav(`/exam/${id}`);
-    localStorage.setItem("id", JSON.stringify(id));
+    localStorage.setItem("classId", JSON.stringify(id));
   };
 
   return (

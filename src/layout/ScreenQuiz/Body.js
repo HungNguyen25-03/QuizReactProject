@@ -21,8 +21,9 @@ export default function Body() {
       // ct.setId(id);
     });
   }, []);
+
   const hanldeSubmit = () => {
-    navigation("/result");
+    navigation(`/result/`);
   };
 
   return (
