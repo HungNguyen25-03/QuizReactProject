@@ -14,10 +14,7 @@ export default function ScreenHome() {
   };
 
   const handleSubmit = (id) => () => {
-    if (id === "285498f5-3486-434d-a459-bedb6bcea7ce") {
-      nav(`/exam/${id}`);
-    } else {
-    }
+    nav(`/exam/${id}`);
     localStorage.setItem("id", JSON.stringify(id));
   };
 
