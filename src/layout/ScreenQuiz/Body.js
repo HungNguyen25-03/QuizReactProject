@@ -24,6 +24,7 @@ export default function Body() {
 
   const hanldeSubmit = () => {
     navigation(`/result/`);
+    
   };
 
   return (

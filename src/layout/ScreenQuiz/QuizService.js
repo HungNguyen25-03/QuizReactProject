@@ -20,3 +20,19 @@ async function CallAPI(apiUrl) {
 }
 
 export default CallAPI;
+
+export async function getPoint(url, answer) {
+  return await fetch(url, {
+    method: "POST",
+    headers: { Accept: "application/json", "Content-Type": "application/json" },
+    body: answer,
+  }).then((response) => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw Error(
+        `Fetch failed. Status:${response.status}. Message:${response.statusText}`
+      );
+    }
+  });
+}

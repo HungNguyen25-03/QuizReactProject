@@ -13,14 +13,14 @@ export default function QuestionForm({ quesId, question, answer }) {
         "result",
         JSON.stringify([
           {
-            questionId: quesId,
+            quesId: quesId,
             answerId: answer.id,
           },
         ])
       );
     } else {
-      _.remove(result, (item) => item.questionId === quesId);
-      result.push({ questionId: quesId, answerId: answer.id });
+      _.remove(result, (item) => item.quesId === quesId);
+      result.push({ quesId: quesId, answerId: answer.id });
       localStorage.setItem("result", JSON.stringify(result));
     }
   };
@@ -29,7 +29,7 @@ export default function QuestionForm({ quesId, question, answer }) {
   useEffect(() => {
     let result = JSON.parse(localStorage.getItem("result")) || [];
     if (result) {
-      let answer = _.find(result, (item) => item.questionId === quesId);
+      let answer = _.find(result, (item) => item.quesId === quesId);
       if (answer) {
         document.getElementById(answer.answerId).checked = true;
       }

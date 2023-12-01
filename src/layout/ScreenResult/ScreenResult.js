@@ -1,39 +1,40 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../../components/Button";
 import "./ScreenResult.scss";
 import Score from "../../components/Score";
+import { getPoint } from "../ScreenQuiz/QuizService";
+import { useNavigate } from "react-router-dom";
 
 export default function ScreenResult() {
+  const [point, setPoint] = useState(0);
+  const nav = useNavigate();
   let id = JSON.parse(localStorage.getItem("classId"));
   let data = JSON.parse(localStorage.getItem("result"));
-  console.log(data);
+
   useEffect(() => {
-    fetch(`https://server.nglearns.com/answer/${id}`, {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-      body: JSON.stringify(data),
-    })
-      .then((res) => {
-        res.json();
-      })
-      .then((data) => {
-        console.log(data);
-      });
-  }, []);
-  // useEffect(() => {
-  //   data = [];
-  //   localStorage.setItem("result", JSON.stringify(data));
-  // }, []);
+    getPoint(
+      `https://server.nglearns.com/answer/${id}`,
+      JSON.stringify(data)
+    ).then((res) => {
+      setPoint(res);
+    });
+  });
+
+  const handleSubmit = () => {
+    localStorage.clear();
+    nav("/");
+  };
 
   return (
     <div className="container">
       <div className="result">
         <h1>Result</h1>
-        <Score></Score>
-        <Button classContent={"result-button"} text={"Submit"}></Button>
+        <h2>Point: {point}</h2>
+        <Button
+          classContent={"result-button"}
+          text={"Back to home"}
+          handleClick={handleSubmit}
+        ></Button>
       </div>
     </div>
   );
