@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Button from "../../components/Button";
 import "./ScreenResult.scss";
-import Score from "../../components/Score";
 import { getPoint } from "../ScreenQuiz/QuizService";
 import { useNavigate } from "react-router-dom";
 
